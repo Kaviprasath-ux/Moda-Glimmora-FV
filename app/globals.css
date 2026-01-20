@@ -1,0 +1,299 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary - Deep Navy */
+    --primary: 222 47% 24%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Champagne Gold */
+    --secondary: 42 47% 58%;
+    --secondary-foreground: 222 47% 24%;
+
+    /* Accent - Soft Rose */
+    --accent: 350 30% 65%;
+    --accent-foreground: 222 47% 24%;
+
+    /* Background - Warm White */
+    --background: 40 20% 98%;
+    --foreground: 222 47% 11%;
+
+    /* Muted */
+    --muted: 40 10% 93%;
+    --muted-foreground: 222 10% 45%;
+
+    /* Card */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Border */
+    --border: 40 10% 88%;
+    --input: 40 10% 88%;
+    --ring: 222 47% 24%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    /* Radius */
+    --radius: 0.5rem;
+
+    /* Font families */
+    --font-playfair: 'Playfair Display', serif;
+    --font-inter: 'Inter', sans-serif;
+    --font-cormorant: 'Cormorant Garamond', serif;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 40 10% 95%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 40 10% 95%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 40 10% 95%;
+
+    --primary: 42 47% 58%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 222 30% 20%;
+    --secondary-foreground: 40 10% 95%;
+
+    --muted: 222 30% 15%;
+    --muted-foreground: 40 10% 60%;
+
+    --accent: 350 30% 45%;
+    --accent-foreground: 40 10% 95%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 30% 20%;
+    --input: 222 30% 20%;
+    --ring: 42 47% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Typography defaults */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair);
+    @apply tracking-tight;
+  }
+
+  /* Focus visible styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  /* Luxury typography styles */
+  .font-display {
+    font-family: var(--font-playfair);
+  }
+
+  .font-body {
+    font-family: var(--font-inter);
+  }
+
+  .font-accent {
+    font-family: var(--font-cormorant);
+  }
+
+  /* Hero text styles */
+  .hero-heading {
+    @apply font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight leading-tight;
+  }
+
+  .hero-subheading {
+    @apply font-accent text-xl md:text-2xl lg:text-3xl font-light tracking-wide;
+  }
+
+  /* Section styles */
+  .section-heading {
+    @apply font-display text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight;
+  }
+
+  .section-subheading {
+    @apply font-body text-sm md:text-base text-muted-foreground tracking-wide uppercase;
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-400 ease-out;
+  }
+
+  .card-hover:hover {
+    @apply shadow-lg transform -translate-y-1;
+  }
+
+  /* Luxury button styles */
+  .btn-luxury {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-luxury-primary {
+    @apply btn-luxury bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+
+  .btn-luxury-secondary {
+    @apply btn-luxury bg-secondary text-secondary-foreground hover:bg-secondary/90;
+  }
+
+  .btn-luxury-outline {
+    @apply btn-luxury border border-primary text-primary hover:bg-primary hover:text-primary-foreground;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
+  }
+
+  /* Image overlay gradient */
+  .image-gradient-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent;
+  }
+
+  /* Skeleton loading */
+  .skeleton {
+    @apply animate-pulse bg-muted rounded;
+  }
+
+  /* Shimmer effect */
+  .shimmer {
+    @apply relative overflow-hidden;
+  }
+
+  .shimmer::after {
+    @apply absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    content: '';
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+
+  /* Luxury divider */
+  .luxury-divider {
+    @apply w-16 h-px bg-gradient-to-r from-transparent via-secondary to-transparent;
+  }
+
+  /* Container with luxury padding */
+  .luxury-container {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section spacing */
+  .section-spacing {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+}
+
+@layer utilities {
+  /* Text balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Luxury scrollbar */
+  .scrollbar-luxury {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--secondary)) transparent;
+  }
+
+  .scrollbar-luxury::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-luxury::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-luxury::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--secondary));
+    border-radius: 3px;
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slide-in-from-bottom 0.5s ease-out forwards;
+  }
+
+  /* Aspect ratio utilities */
+  .aspect-portrait {
+    aspect-ratio: 3 / 4;
+  }
+
+  .aspect-landscape {
+    aspect-ratio: 16 / 9;
+  }
+
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Line clamp */
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
