@@ -47,3 +47,6 @@ export function capitalize(text: string): string {
 export function capitalizeWords(text: string): string {
   return text.split(" ").map(capitalize).join(" ")
 }
+
+// Alias for formatCurrency
+export const formatPrice = formatCurrency

@@ -5,3 +5,11 @@ export * from "./cart"
 export * from "./order"
 export * from "./user"
 export * from "./ai"
+
+// UHNI-specific types
+export * from "./uhni"
+export * from "./zero-ui"
+export * from "./sourcing"
+export * from "./concierge"
+export * from "./bespoke"
+export * from "./privacy"
